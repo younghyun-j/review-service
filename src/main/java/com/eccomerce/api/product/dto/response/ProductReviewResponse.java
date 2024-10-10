@@ -1,19 +1,23 @@
 package com.eccomerce.api.product.dto.response;
 
-import java.util.List;
+import com.eccomerce.api.product.domain.ProductReview;
+
+import java.time.LocalDateTime;
 
 public record ProductReviewResponse(
-    int totalCount,
-    int score,
-    int cursor,
-    List<ProductReviewDetailResponse> reviews
+        Long id,
+        Long userId,
+        int score,
+        String content,
+        String imageUrl
 ) {
-    public static ProductReviewResponse of(int totalCount, int score, int cursor, List<ProductReviewDetailResponse> reviews) {
+    public static ProductReviewResponse from(ProductReview productReview) {
         return new ProductReviewResponse(
-                totalCount,
-                score,
-                cursor,
-                reviews
+                productReview.getId(),
+                productReview.getUserId(),
+                productReview.getScore(),
+                productReview.getContent(),
+                productReview.getImageUrl()
         );
     }
 }
