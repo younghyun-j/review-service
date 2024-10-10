@@ -1,5 +1,7 @@
 package com.eccomerce.api.product.dto.request;
 
+import com.eccomerce.api.product.domain.Product;
+import com.eccomerce.api.product.domain.ProductReview;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Range;
@@ -14,4 +16,14 @@ public record CreateProductReviewRequest(
         String content,
         MultipartFile image
 ) {
+        public static ProductReview toEntity(CreateProductReviewRequest request, Product product, String uploadImageUrl) {
+                return ProductReview.builder()
+                        .userId(request.userId())
+                        .score(request.score())
+                        .content(request.content())
+                        .product(product)
+                        .imageUrl(uploadImageUrl)
+                        .build();
+
+        }
 }

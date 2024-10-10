@@ -20,4 +20,10 @@ public class Product {
     private Double score;
     @OneToMany(mappedBy = "product")
     private List<ProductReview> reviews = new ArrayList<>();
+
+    public void updateReviewCountAndRating(int newRating) {
+        double updatedTotalRatings = this.score + newRating;
+        this.reviewCount++;
+        this.score = updatedTotalRatings / this.reviewCount;
+    }
 }
