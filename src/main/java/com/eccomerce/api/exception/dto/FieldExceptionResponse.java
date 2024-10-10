@@ -1,4 +1,4 @@
-package com.eccomerce.api.exception;
+package com.eccomerce.api.exception.dto;
 
 import org.springframework.validation.BindingResult;
 

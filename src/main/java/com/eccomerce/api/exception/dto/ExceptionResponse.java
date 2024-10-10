@@ -1,5 +1,6 @@
-package com.eccomerce.api.exception;
+package com.eccomerce.api.exception.dto;
 
+import com.eccomerce.api.exception.ExceptionCode;
 import org.springframework.http.HttpStatus;
 
 public record ExceptionResponse(
