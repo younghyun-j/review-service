@@ -7,6 +7,7 @@ spring:
       mode: always
       data-locations:
         - classpath:product-data.sql
+        - classpath:review-data.sql
   h2:
     console:
       enabled: true
