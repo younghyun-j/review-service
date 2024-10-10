@@ -16,15 +16,15 @@ public class ProductReviewController {
     private final ProductReviewService productReviewService;
     private final ImageService imageService;
 
-    @GetMapping("/products/{productId}/reviews")
-    public ResponseEntity<Void> findReviews(@PathVariable Long productId,
+    @PostMapping("/products/{productId}/reviews")
+    public ResponseEntity<Void> createProductReview(@PathVariable Long productId,
                                             @ModelAttribute @Valid CreateProductReviewRequest request) {
         // 이미지 업로드
         String uploadImageUrl = "";
         if (request.image() != null) {
             uploadImageUrl = imageService.imageUpload(request.image());
         }
-        productReviewService.saveProductReview(productId, request, uploadImageUrl);
+        productReviewService.createProductReview(productId, request, uploadImageUrl);
         return ResponseEntity.ok().build();
     }
 

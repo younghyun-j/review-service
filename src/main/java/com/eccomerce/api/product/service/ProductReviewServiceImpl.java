@@ -22,7 +22,7 @@ public class ProductReviewServiceImpl implements ProductReviewService {
 
     @Override
     @Transactional
-    public void saveProductReview(Long productId, CreateProductReviewRequest request, String uploadImageUrl) {
+    public void createProductReview(Long productId, CreateProductReviewRequest request, String uploadImageUrl) {
         // 상품 조회
         Product getProduct = productRepository.findById(productId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.PRODUCT_NOT_FOUND));
