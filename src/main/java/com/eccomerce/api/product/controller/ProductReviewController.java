@@ -29,10 +29,7 @@ public class ProductReviewController {
     public ResponseEntity<Void> createProductReview(@PathVariable Long productId,
                                             @ModelAttribute @Valid CreateProductReviewRequest request) {
         // 이미지 업로드
-        String uploadImageUrl = "";
-        if (request.image() != null) {
-            uploadImageUrl = imageService.imageUpload(request.image());
-        }
+        String uploadImageUrl = imageService.imageUpload(request.image());
         productReviewService.createProductReview(productId, request, uploadImageUrl);
         return ResponseEntity.ok().build();
     }

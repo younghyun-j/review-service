@@ -13,12 +13,17 @@ public class ImageServiceImpl implements ImageService{
 
     @Override
     public String imageUpload(MultipartFile file) {
+        if (isFileEmpty(file)) return null;
         Image image = new Image(file);
         return uploadFile(image);
     }
 
     private String uploadFile(Image image) {
         return IMAGE_BASE_URI + UUID.randomUUID() + image.getExtension();
+    }
+
+    private static boolean isFileEmpty(MultipartFile file) {
+        return file == null || file.isEmpty();
     }
 
 }
