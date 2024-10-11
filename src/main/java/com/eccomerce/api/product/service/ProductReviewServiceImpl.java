@@ -30,9 +30,7 @@ public class ProductReviewServiceImpl implements ProductReviewService {
         Product getProduct = findProductById(productId);
 
         // 리뷰 중복 체크
-        Boolean hasUserAlreadyReviewedProduct = productReviewRepository
-                .existsProductReviewByProductIdAndUserId(getProduct.getId(), request.userId());
-        if (hasUserAlreadyReviewedProduct) {
+        if (productReviewRepository.existsProductReviewByProductIdAndUserId(getProduct.getId(), request.userId())) {
             throw new CustomException(ExceptionCode.DUPLICATE_REVIEW);
         }
 
