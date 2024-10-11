@@ -6,7 +6,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "Review")
+@Table(name = "Review", indexes = {
+        @Index(name = "idx_product_id_review_id", columnList = "productId, id"),
+        @Index(name = "idx_product_id_user_id", columnList = "productId, userId")
+})
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
